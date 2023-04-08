@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwvwrucbb5o3g"]
+
+[ext_resource type="PackedScene" uid="uid://5cbywf63b4ta" path="res://Player/player.tscn" id="1_7bmdk"]
+[ext_resource type="Script" path="res://level.gd" id="1_7h17g"]
+[ext_resource type="PackedScene" uid="uid://b72w4b0eksq2k" path="res://bullet.tscn" id="2_ffosm"]
+[ext_resource type="PackedScene" uid="uid://c1f66sroq4prj" path="res://LevelG/OuterWalls.tscn" id="3_o4m1d"]
+[ext_resource type="PackedScene" uid="uid://cc1yynegysis1" path="res://LevelG/l_wall.tscn" id="5_1i5b1"]
+[ext_resource type="PackedScene" uid="uid://cv5g67rdpli7t" path="res://UI/ui.tscn" id="6_uy71t"]
+[ext_resource type="PackedScene" uid="uid://b57t123mvnivx" path="res://LevelG/X_wall.tscn" id="7_fq08v"]
+[ext_resource type="PackedScene" uid="uid://d2ayni45k7fb7" path="res://LevelG/i_wall.tscn" id="8_irwmf"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_7h17g")
+bullet_scene = ExtResource("2_ffosm")
+
+[node name="OuterWalls" parent="." instance=ExtResource("3_o4m1d")]
+
+[node name="Player" parent="." instance=ExtResource("1_7bmdk")]
+position = Vector2(136, 504)
+rotation = 3.14159
+
+[node name="Player2" parent="." instance=ExtResource("1_7bmdk")]
+position = Vector2(1016, 136)
+playernumber = 2
+
+[node name="LWall" parent="." instance=ExtResource("5_1i5b1")]
+position = Vector2(960, 192)
+rotation = 1.5708
+
+[node name="LWall2" parent="." instance=ExtResource("5_1i5b1")]
+position = Vector2(192, 448)
+rotation = -1.5708
+
+[node name="UI" parent="." instance=ExtResource("6_uy71t")]
+
+[node name="ResetTimer" type="Timer" parent="."]
+
+[node name="P1Spawn" type="Marker2D" parent="."]
+position = Vector2(136, 504)
+
+[node name="P2Spawn" type="Marker2D" parent="."]
+position = Vector2(1016, 136)
+
+[node name="XWall" parent="." instance=ExtResource("7_fq08v")]
+position = Vector2(578, 320)
+
+[node name="IWall" parent="." instance=ExtResource("8_irwmf")]
+position = Vector2(271, 188)
+
+[node name="IWall2" parent="." instance=ExtResource("8_irwmf")]
+position = Vector2(881, 460)
+
+[connection signal="got_hit" from="Player" to="UI" method="_on_player_got_hit"]
+[connection signal="gun_point" from="Player" to="." method="_on_player_gun_point"]
+[connection signal="gun_point_rotate" from="Player" to="." method="_on_player_gun_point_rotate"]
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
+[connection signal="player_shot" from="Player" to="." method="_on_player_player_shot"]
+[connection signal="got_hit" from="Player2" to="UI" method="_on_player_2_got_hit"]
+[connection signal="gun_point" from="Player2" to="." method="_on_player_2_gun_point"]
+[connection signal="gun_point_rotate" from="Player2" to="." method="_on_player_2_gun_point_rotate"]
+[connection signal="player_died" from="Player2" to="." method="_on_player_2_player_died"]
+[connection signal="player_shot" from="Player2" to="." method="_on_player_2_player_shot"]
+[connection signal="Start" from="UI" to="." method="_on_ui_start"]

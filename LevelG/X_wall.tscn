@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://b57t123mvnivx"]
+
+[ext_resource type="Texture2D" uid="uid://dqf46hgour5pn" path="res://LevelG/wall.png" id="1_jbgla"]
+
+[node name="XWall" type="StaticBody2D"]
+scale = Vector2(10, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 20)
+texture = ExtResource("1_jbgla")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(3, 20)
+texture = ExtResource("1_jbgla")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-1.5, -10, -1.5, -1.5, -10, -1.5, -10, 1.5, -1.5, 1.5, -1.5, 10, 1.5, 10, 1.5, 1.5, 10, 1.5, 10, -1.5, 1.5, -1.5, 1.5, -10)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1.5, -10, -1.5, -1.5, -10, -1.5, -10, 1.5, -1.5, 1.5, -1.5, 10, 1.5, 10, 1.5, 1.5, 10, 1.5, 10, -1.5, 1.5, -1.5, 1.5, -10)
