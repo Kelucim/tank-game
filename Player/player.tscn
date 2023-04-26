@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://5cbywf63b4ta"]
+
+[ext_resource type="Texture2D" uid="uid://ys7ce32bnq5n" path="res://Player/tank.png" id="1_ms182"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_xb03a"]
+
+[node name="Player" type="CharacterBody2D" groups=["Players"]]
+position = Vector2(0, 3)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_xb03a")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("1_ms182")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(10, -20, 10, -15, 5, -15, 5, -5, 10, -5, 10, -10, 15, -10, 15, 20, 10, 20, 10, 15, -10, 15, -10, 20, -15, 20, -15, -10, -10, -10, -10, -5, -5, -5, -5, -15, -10, -15, -10, -20)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(10, -20, 10, -15, 5, -15, 5, -5, 10, -5, 10, -10, 15, -10, 15, 20, 10, 20, 10, 15, -10, 15, -10, 20, -15, 20, -15, -10, -10, -10, -10, -5, -5, -5, -5, -15, -10, -15, -10, -20)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwvwrucbb5o3g"]
+
+[ext_resource type="PackedScene" uid="uid://5cbywf63b4ta" path="res://Player/player.tscn" id="1_7bmdk"]
+[ext_resource type="Script" path="res://level.gd" id="1_7h17g"]
+[ext_resource type="PackedScene" uid="uid://cv5g67rdpli7t" path="res://UI/ui.tscn" id="6_uy71t"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_7h17g")
+
+[node name="Player" parent="." instance=ExtResource("1_7bmdk")]
+
+[node name="Player2" parent="." instance=ExtResource("1_7bmdk")]
+playernumber = 2
+
+[node name="UI" parent="." instance=ExtResource("6_uy71t")]
+
+[node name="P1Spawn" type="Marker2D" parent="."]
+position = Vector2(136, 504)
+
+[node name="P2Spawn" type="Marker2D" parent="."]
+position = Vector2(1016, 136)
+
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 0.95
+one_shot = true
